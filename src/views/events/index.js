@@ -20,7 +20,7 @@ class Events extends Component {
     let year = e.target.elements.year.value;
 
 
-    let URL = 'https://fierce-plains-48308.herokuapp.com/api/retrieve';
+    let URL = 'http://localhost:5000/api/retrieve';
 
     let response = await fetch(URL, {
       "method": "GET",
@@ -56,7 +56,7 @@ class Events extends Component {
       return;
     }
 
-    let URL = 'https://fierce-plains-48308.herokuapp.com/api/delete';
+    let URL = 'http://localhost:5000/api/delete';
 
     let response = await fetch(URL, {
       "method": "DELETE",
@@ -70,18 +70,13 @@ class Events extends Component {
 
     if (data.success) {
       let events = this.state.events;
+      events = events.filter(event => event.event_id != id);
 
-      for (let i in events) {
-        if (events[i].event_id == id) {
-          events.splice(i, 1);
-          break;
-        }
-      }
       this.setState({ events });
 
-      alert('Successfully delete the event.');
+      alert('Successfully deleted the event.');
     } else {
-      alert('Sorry, but wer could not delete the event.');
+      alert('Sorry, but we could not delete the event.');
     }
   }
 

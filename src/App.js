@@ -10,7 +10,8 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route exact path='/' render={() => <Schedule />} />
+        <Route exact path='/' render={() => <Schedule />}
+        />
         <Route exact path='/events' render={() => <Events />} />
       </Switch>
     </div>
